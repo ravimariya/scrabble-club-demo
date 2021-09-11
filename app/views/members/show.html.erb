@@ -8,7 +8,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Email: <%= @member.email %></li>
         <li class="list-group-item">Phone: <%= @member.phone_number %></li>
-        <li class="list-group-item">Total Matches: <% %></li>
+        <li class="list-group-item">Total Matches: <%= @member_stats[:total_games] %></li>
         <li class="list-group-item">Win: <%= @member_stats[:won] %></li>
         <li class="list-group-item">Loss: <%= @member_stats[:loss] %></li>
         <li class="list-group-item">Average Score: <%= @member_stats[:average] %></li>
