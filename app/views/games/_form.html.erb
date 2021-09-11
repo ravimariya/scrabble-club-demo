@@ -1,0 +1,27 @@
+<div class='col-md-6'>
+  <%= form_for @game do |f| %>
+  <%= render "layouts/error_messages", target: @game %>
+  <div class="form-group">
+    <label>Title</label>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+  </div>
+  <div class="form-group">
+    <label>Date</label>
+    <%= f.date_field :end_at, class: 'form-control', placeholder: 'Date' %>
+  </div>
+  <%= f.fields_for :participants do |p| %>
+  <div class="form-group">
+    <label>Participant <%= p.options[:child_index] + 1 %></label>
+    <%= p.collection_select(:member_id, Member.all, :id, :full_name, { include_blank: 'Select Participant'}, { class: 'form-control' }) %>
+  </div>
+  <div class="form-group">
+    <label>Score</label>
+    <%= p.number_field :score, class: 'form-control', required: true %>
+  </div>
+  <% end %>
+  <div class='m-top-10'>
+    <%= link_to 'Back', games_path, class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+</div>

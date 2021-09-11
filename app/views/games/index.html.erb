@@ -1,0 +1,36 @@
+<div class='row'>
+<h1>Games</h1>
+  <div class="col-md-12">
+    <%= link_to 'Add Game', new_game_path, class: 'btn btn-primary flt-rg m-btm-10' %>
+  </div>
+  <div class='col-md-12'>
+  <table class="table table-striped table-bordered table-responsive member-listing">
+    <thead>
+      <tr>
+        <th scope="col">Game Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Participant 1 (Score)</th>
+        <th scope="col">Participant 2 (Score)</th>
+        <th scope="col">Winner</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% games, game_stats = @games_data[0], @games_data[1] %>
+      <% games&.each do |game| %>
+        <tr>
+          <td><%= game.title %></td>
+          <td><%= game.end_at.strftime("%b %d %Y") %></td>
+          <td><%= participant_stats(game, game_stats, :participant_1) %></td>
+          <td><%= participant_stats(game, game_stats, :participant_2) %></td>
+          <td><%= game_stats[game.id][:winner] %></td>
+          <td>
+            <%= link_to 'Edit', edit_game_path(game), class: 'btn-sm btn-primary' %>
+            <%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you sure you want to delete this game?' }, class: 'btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
+</div>

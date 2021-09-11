@@ -1,0 +1,34 @@
+<div class='row'>
+<h1>Members</h1>
+  <div class="col-md-12">
+    <%= link_to 'Add Member', new_member_path, class: 'btn btn-primary flt-rg m-btm-10' %>
+  </div>
+  <div class='col-md-12'>
+  <table class="table table-striped table-bordered table-responsive member-listing">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members&.each do |member| %>
+        <tr>
+          <td><%= member.first_name %></td>
+          <td><%= member.last_name %></td>
+          <td><%= member.email %></td>
+          <td><%= member.phone_number %></td>
+          <td>
+            <%= link_to 'Show', member_path(member), class: 'btn-sm btn-primary' %>
+            <%= link_to 'Edit',  edit_member_path(member), class: 'btn-sm btn-primary' %>
+            <%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure you want to delete this member?' }, class: 'btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
+</div>

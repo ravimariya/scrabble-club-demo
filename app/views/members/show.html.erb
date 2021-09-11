@@ -1,0 +1,23 @@
+<div class='row'>
+  <h1>Member Detail</h1>
+  <div class='col-md-6'>
+    <div class="card">
+      <div class="card-header">
+        <%= @member.full_name %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: <%= @member.email %></li>
+        <li class="list-group-item">Phone: <%= @member.phone_number %></li>
+        <li class="list-group-item">Total Matches: <% %></li>
+        <li class="list-group-item">Win: <%= @member_stats[:won] %></li>
+        <li class="list-group-item">Loss: <%= @member_stats[:loss] %></li>
+        <li class="list-group-item">Average Score: <%= @member_stats[:average] %></li>
+        <li class="list-group-item">Highest Score: <%= @member_stats[:highest] %></li>
+      </ul>
+    </div>
+    <div class='m-top-10'>
+      <%= link_to 'Back', members_path, class: 'btn btn-primary' %>
+      <%= link_to 'Edit', edit_member_path(@member), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
